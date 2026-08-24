@@ -2072,6 +2072,11 @@ class Parallel(Logger):
             if hasattr(pre_dispatch, "endswith"):
                 pre_dispatch = eval_expr(pre_dispatch.replace("n_jobs", str(n_jobs)))
             self._pre_dispatch_amount = pre_dispatch = int(pre_dispatch)
+            if pre_dispatch < 1:
+                raise ValueError(
+                    "pre_dispatch must be 'all' or a positive number of "
+                    "batches, got: %r" % self.pre_dispatch
+                )
 
             # The main thread will consume the first pre_dispatch items and
             # the remaining items will later be lazily dispatched by async
