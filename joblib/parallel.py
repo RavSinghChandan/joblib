@@ -1059,7 +1059,7 @@ class Parallel(Logger):
     timeout: float or None, default=None
         Timeout limit for each task to complete.  If any task takes longer
         a TimeOutError will be raised. Only applied when n_jobs != 1
-    pre_dispatch: {'all', integer, or expression, as in '3*n_jobs'}, default='2*n_jobs'
+    pre_dispatch: {'all', positive integer, or expression, as in '3*n_jobs'}, default='2*n_jobs'
         The number of batches (of tasks) to be pre-dispatched.
         Default is '2*n_jobs'. When batch_size="auto" this is reasonable
         default and the workers should never starve. Note that only basic
