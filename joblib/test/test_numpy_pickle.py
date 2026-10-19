@@ -852,6 +852,7 @@ def test_load_corrupted_input_raises_unpickling_error(data, key):
     assert str(joblib_exc.value) == str(pickle_exc.value)
 
 
+@with_numpy
 def test_in_memory_persistence():
     objs = [np.random.random((10, 10)), "some data"]
     for obj in objs:
